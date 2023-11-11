@@ -4,7 +4,9 @@ import Link from "next/link";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const pleaseSub = api.subscribe.sub.useQuery({
+    text: "codeDarsh",
+  });
 
   return (
     <>
@@ -42,9 +44,8 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p>
+          <p className="text-2xl text-white">{pleaseSub.data ? pleaseSub.data?.pleaseSub 
+          + ' Channel' : "Loading Channel"}</p>
         </div>
       </main>
     </>
